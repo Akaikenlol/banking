@@ -114,12 +114,12 @@ const AuthForm = ({ type }: { type: string }) => {
 										label={"City"}
 										placeholder={"Enter your city"}
 									/>
-									<CustomInput
+									{/* <CustomInput
 										control={form.control}
 										name={"address1"}
 										label={"Address"}
 										placeholder={"Enter your specific address"}
-									/>
+									/> */}
 									<div className="flex gap-4">
 										<CustomInput
 											control={form.control}
