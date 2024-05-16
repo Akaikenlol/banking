@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import {
 	Table,
 	TableBody,
@@ -10,6 +7,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { transactionCategoryStyles } from "@/constants";
 import {
 	cn,
 	formatAmount,
@@ -17,18 +15,17 @@ import {
 	getTransactionStatus,
 	removeSpecialCharacters,
 } from "@/lib/utils";
-import { transactionCategoryStyles } from "@/constants";
 
 const CategoryBadge = ({ category }: CategoryBadgeProps) => {
 	const { borderColor, backgroundColor, textColor, chipBackgroundColor } =
 		transactionCategoryStyles[
 			category as keyof typeof transactionCategoryStyles
 		] || transactionCategoryStyles.default;
+
 	return (
-		<div className={cn("category-badge", borderColor)}>
-			<div className={cn("size-2 rounded-full", backgroundColor)}>
-				<p className={cn("text-[12px] font-medium", textColor)}>{category}</p>
-			</div>
+		<div className={cn("category-badge", borderColor, chipBackgroundColor)}>
+			<div className={cn("size-2 rounded-full", backgroundColor)} />
+			<p className={cn("text-[12px] font-medium", textColor)}>{category}</p>
 		</div>
 	);
 };
@@ -47,7 +44,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				{transactions.map((t: Transaction) => {
+				{transactions?.map((t: Transaction) => {
 					const status = getTransactionStatus(new Date(t.date));
 					const amount = formatAmount(t.amount);
 
@@ -73,7 +70,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
 								className={`pl-2 pr-10 font-semibold ${
 									isDebit || amount[0] === "-"
 										? "text-[#f04438]"
-										: "bg-[#039855]"
+										: "text-[#039855]"
 								}`}
 							>
 								{isDebit ? `-${amount}` : isCredit ? amount : amount}
@@ -83,7 +80,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
 								<CategoryBadge category={status} />
 							</TableCell>
 
-							<TableCell className="pl-2 pr-10 min-w-32">
+							<TableCell className="min-w-32 pl-2 pr-10">
 								{formatDateTime(new Date(t.date)).dateTime}
 							</TableCell>
 
