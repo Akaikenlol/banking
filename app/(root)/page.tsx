@@ -1,6 +1,5 @@
 import HeaderBox from "@/components/HeaderBox";
 import RecentTransactions from "@/components/RecentTransactions";
-// import RecentTransactions from '@/components/RecentTransactions';
 import RightSideBar from "@/components/RightSideBar";
 import TotalBalanceBox from "@/components/TotalBalanceBox";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
@@ -20,7 +19,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 
 	const account = await getAccount({ appwriteItemId });
 
-	// console.log({ accountsData, account });
+	console.log({ accountsData, accounts, account });
 
 	return (
 		<section className="home">
