@@ -5,7 +5,7 @@ import { CountryCode } from "plaid";
 import { plaidClient } from "../plaid";
 import { parseStringify } from "../utils";
 
-// import { getTransactionsByBankId } from "./transaction.actions";
+import { getTransactionsByBankId } from "./transaction.actions";
 import { getBanks, getBank } from "./user.actions";
 
 // Get multiple bank accounts
