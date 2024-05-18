@@ -4,6 +4,7 @@ import RightSideBar from "@/components/RightSideBar";
 import TotalBalanceBox from "@/components/TotalBalanceBox";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
+import { error } from "console";
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 	const currentPage = Number(page as string) || 1;
@@ -17,9 +18,16 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 	const accountsData = accounts?.data;
 	const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
 
+	if (!appwriteItemId) {
+		console.error("No account found", error);
+		return;
+	}
+
 	const account = await getAccount({ appwriteItemId });
 
-	console.log({ accountsData, accounts, account });
+	console.log({ account });
+	// console.log({ accounts });
+	// console.log({ accountsData });
 
 	return (
 		<section className="home">

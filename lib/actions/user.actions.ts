@@ -105,8 +105,12 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
 		});
 
 		return parseStringify(newUser);
-	} catch (error) {
-		console.error("Error", error);
+	} catch (error: any) {
+		if (error.message.includes("Creating a Dwolla Customer Failed")) {
+			// Handle the Dwolla error here
+		} else {
+			console.error("Error", error);
+		}
 	}
 };
 

@@ -1,6 +1,13 @@
 "use server";
 
-import { CountryCode } from "plaid";
+import {
+	ACHClass,
+	CountryCode,
+	TransferAuthorizationCreateRequest,
+	TransferCreateRequest,
+	TransferNetwork,
+	TransferType,
+} from "plaid";
 
 import { plaidClient } from "../plaid";
 import { parseStringify } from "../utils";
@@ -38,7 +45,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
 					type: accountData.type as string,
 					subtype: accountData.subtype! as string,
 					appwriteItemId: bank.$id,
-					shareableId: bank.shareableId,
+					sharaebleId: bank.shareableId,
 				};
 
 				return account;
