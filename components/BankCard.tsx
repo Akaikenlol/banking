@@ -5,7 +5,7 @@ import Image from "next/image";
 import Copy from "./Copy";
 
 const BankCard = ({ account, userName, showBalance }: CreditCardProps) => {
-	console.log(account);
+	// console.log(account);
 	return (
 		<div className="flex flex-col">
 			<Link
