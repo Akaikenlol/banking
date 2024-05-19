@@ -1,5 +1,3 @@
-"use client";
-
 import { logoutAccount } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -24,7 +22,7 @@ const Footer = ({ user, type = "desktop" }: FooterProps) => {
 				className={type === "mobile" ? "footer_email-mobile" : "footer_email"}
 			>
 				<h1 className="text-14 truncate text-gray-700 font-semibold">
-					{user.firstName} {user.lastName}
+					{user?.firstName} {user?.lastName}
 				</h1>
 				<p className="text-14 truncate font-normal text-gray-600">
 					{user?.email}
