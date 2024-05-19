@@ -33,7 +33,9 @@ const Sidebar = ({ user }: SidebarProps) => {
 						<Link
 							href={item.route}
 							key={item.label}
-							className={cn("sidebar-link", { "bg-bank-gradient": isActive })}
+							className={cn("sidebar-link", {
+								"bg-bank-gradient": isActive,
+							})}
 						>
 							<div className="relative size-6">
 								<Image
@@ -51,8 +53,10 @@ const Sidebar = ({ user }: SidebarProps) => {
 						</Link>
 					);
 				})}
+
 				<PlaidLink user={user} />
 			</nav>
+
 			<Footer user={user} />
 		</section>
 	);

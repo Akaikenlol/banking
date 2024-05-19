@@ -5,9 +5,9 @@ import BankCard from "./BankCard";
 import { countTransactionCategories } from "@/lib/utils";
 import Category from "./Category";
 
-const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
+const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
 	const categories: CategoryCount[] = countTransactionCategories(transactions);
-	// console.log(categories);
+
 	return (
 		<aside className="right-sidebar">
 			<section className="flex flex-col pb-8">
@@ -31,9 +31,9 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
 			<section className="banks">
 				<div className="flex w-full justify-between">
 					<h2 className="header-2">My Banks</h2>
-					<Link href={"/"} className="flex gap-2 ">
-						<Image src={"/icons/plus.svg"} width={20} height={20} alt="plus" />
-						<h2 className="text-14 font-semibold">Add bank</h2>
+					<Link href="/" className="flex gap-2">
+						<Image src="/icons/plus.svg" width={20} height={20} alt="plus" />
+						<h2 className="text-14 font-semibold text-gray-600">Add Bank</h2>
 					</Link>
 				</div>
 
@@ -62,13 +62,16 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
 
 				<div className="mt-10 flex flex-1 flex-col gap-6">
 					<h2 className="header-2">Top categories</h2>
-					{categories.map((category, index) => (
-						<Category key={category.name} category={category} />
-					))}
+
+					<div className="space-y-5">
+						{categories.map((category, index) => (
+							<Category key={category.name} category={category} />
+						))}
+					</div>
 				</div>
 			</section>
 		</aside>
 	);
 };
 
-export default RightSideBar;
+export default RightSidebar;
